@@ -120,9 +120,6 @@
   <ItemGroup>
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\..\Documents\Visual Studio 2015\Projects\helloworld\helloworld\file.out" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

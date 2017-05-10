@@ -19,4 +19,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\Documents\Visual Studio 2015\Projects\helloworld\helloworld\file.out">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>

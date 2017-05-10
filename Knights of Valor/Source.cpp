@@ -1,20 +1,9 @@
 #include <iostream>
-
 using namespace std;
+
+//initial main
 
 int main() {
 
 	return 0;
-	asdasd
-		asdasd
-		ds
-
-		sssdasd
-
-		sdfsdfds
-
-
-
-		sass
-		ss
 }

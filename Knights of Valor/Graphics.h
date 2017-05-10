@@ -6,9 +6,6 @@
 #include"Gui.h"
 using namespace std;
 
-
-#define FLIPBITS_WORD(x) (((x&0xFF)<<8) | (x>>8)  )
-#define FLIPBITS_DWORD(x) (((x&0xFF)<<24) | ((x&0xFF00)<<8) | ((x&0xFF0000)>>8) | ((x&0xFF000000)>>24)  )
 class Bitmap
 {
 

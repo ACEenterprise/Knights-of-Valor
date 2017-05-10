@@ -11,7 +11,7 @@ Graphics::Graphics(Window &window, int width, int height)
 	x = y = 0;
 	this->hwnd = window.hwnd;
 	HDC hdc = GetDC(hwnd);
-
+	
 	scale_width = this->width = width;
 	scale_height = this->height = height;
 

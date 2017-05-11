@@ -17,16 +17,14 @@ private:
 	unsigned char *pixels;
 	unsigned char *color_table;
 
-private:
+	int width;
+	int height;
+
 	void create(HWND hwnd);
 
 	void create_mask(HWND hwnd, bool reverse);
 
 public:
-
-	int width;
-	int height;
-
 	Bitmap();
 
 	bool Load(const char *file_name);

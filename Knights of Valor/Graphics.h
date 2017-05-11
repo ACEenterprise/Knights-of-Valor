@@ -48,8 +48,6 @@ public:
 
 	void translate(int x, int y);
 
-
-
 	void resize(int width, int height);
 
 	~Graphics();

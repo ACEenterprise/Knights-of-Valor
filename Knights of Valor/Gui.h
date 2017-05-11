@@ -128,9 +128,6 @@ public:
 		static const int key_released = 72;
 	};
 
-
-
-
 	bool create_window(const char *title, int x, int y, int width, int height);
 
 	std::pair<int, int> pollEvent();
@@ -143,7 +140,7 @@ public:
 
 	int getClientWidth();
 
-	int getClinetHeight();
+	int getClientHeight();
 
 	void setWindowTitle(std::string title);
 

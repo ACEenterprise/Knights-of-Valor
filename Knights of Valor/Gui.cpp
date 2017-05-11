@@ -52,6 +52,7 @@ bool Window::create_window(const char *title, int x, int y, int width, int heigh
 
 std::pair<int, int> Window::pollEvent()
 {
+	POINT p;
 	if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 	{
 		TranslateMessage(&msg);
@@ -60,53 +61,42 @@ std::pair<int, int> Window::pollEvent()
 		switch (msg.message)
 		{
 
-		case WM_CLOSE:
+		case WM_QUIT:
 			return std::make_pair(Window_event::close, 0);
-			break;
-		case WM_DESTROY:
-			PostQuitMessage(0);
 			break;
 
 		case WM_KEYDOWN:
 			nr = 0;
-			for (int i = 'A'; i <= 'Z'; ++i, nr++)
-			{
-				if (LOWORD(msg.wParam) == i)
-				{
-					return std::make_pair(Key_event::key_pressed, nr);
-					break;
-				}
-			}
 
-			for (int i = '0'; i <= '9'; ++i, nr++)
-			{
-				if (LOWORD(msg.wParam) == i)
-				{
-					return std::make_pair(Key_event::key_pressed, nr);
-					break;
-				}
-			}
+			if(LOWORD(msg.wParam)>='A' && LOWORD(msg.wParam) <='Z')
+                 return std::make_pair(Key_event::key_pressed, LOWORD(msg.wParam)-'A');
+			
+			if (LOWORD(msg.wParam) >= '0' && LOWORD(msg.wParam) <= '9')
+				return std::make_pair(Key_event::key_pressed, LOWORD(msg.wParam)-'0'+52);
+
 			break;
 		case WM_KEYUP:
 			nr = 0;
-			for (int i = 'A'; i <= 'Z'; ++i, nr++)
-			{
-				if (LOWORD(msg.wParam) == i)
-				{
-					return std::make_pair(Key_event::key_released, nr);
-					break;
-				}
-			}
+			if (LOWORD(msg.wParam) >= 'A' && LOWORD(msg.wParam) <= 'Z')
+				return std::make_pair(Key_event::key_released, LOWORD(msg.wParam) - 'A');
 
-			for (int i = '0'; i <= '9'; ++i, nr++)
-			{
-				if (LOWORD(msg.wParam) == i)
-				{
-					return std::make_pair(Key_event::key_released, nr);
-					break;
-				}
-			}
+			if (LOWORD(msg.wParam) >= '0' && LOWORD(msg.wParam) <= '9')
+				return std::make_pair(Key_event::key_released, LOWORD(msg.wParam) - '0' + 52);
 			break;
+		case WM_LBUTTONDOWN:
+			GetCursorPos(&p);
+			ScreenToClient(hwnd, &p);
+			
+			return std::make_pair(Mouse_event::left_pressed, p.x | ((p.y)<<16));
+			break;
+		case WM_LBUTTONUP:
+			GetCursorPos(&p);
+			ScreenToClient(hwnd, &p);
+
+			return std::make_pair(Mouse_event::left_released, p.x | ((p.y) << 16));
+			break;
+
+		  //RIGHT CLICK AND ARROWS TO DO
 		}
 	}
 	return std::make_pair(-1, 0);
@@ -132,7 +122,7 @@ int Window::getClientWidth()
 	return client_width;
 }
 
-int Window::getClinetHeight()
+int Window::getClientHeight()
 {
 	return client_height;
 }

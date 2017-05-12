@@ -119,8 +119,6 @@ void Graphics::draw(Bitmap *bitmap, int x, int y, int width, int height, int cho
 		if (mask)
 			mask->create_mask(hwnd, reverse);
 
-
-
 		HDC hdc = GetDC(hwnd);
 
 		HDC mem = CreateCompatibleDC(hdc);
@@ -137,8 +135,10 @@ void Graphics::draw(Bitmap *bitmap, int x, int y, int width, int height, int cho
 		POINT p[3] = { { x + width / 2 + mid_rotated_top_left.x,y + height / 2 + mid_rotated_top_left.y },
 		{ x + width / 2 + mid_rotated_top_right.x,y + height / 2 + mid_rotated_top_right.y },
 		{ x + width / 2 + mid_rotated_bottom_left.x,y + height / 2 + mid_rotated_bottom_left.y } };
-
-		PlgBlt(mHdc, p, mem, chop_x, chop_y, chop_width, chop_height, mask->bm, chop_x, chop_y);
+        if(mask)
+			PlgBlt(mHdc, p, mem, chop_x, chop_y, chop_width, chop_height, mask->bm, chop_x, chop_y);
+		else
+			PlgBlt(mHdc, p, mem, chop_x, chop_y, chop_width, chop_height, NULL, chop_x, chop_y);
 
 		SelectObject(mem, old);
 

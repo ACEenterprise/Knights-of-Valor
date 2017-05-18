@@ -11,7 +11,7 @@ Graphics::Graphics(Window &window, int width, int height)
 	x = y = 0;
 	this->hwnd = window.hwnd;
 	HDC hdc = GetDC(hwnd);
-	
+
 	scale_width = this->width = width;
 	scale_height = this->height = height;
 
@@ -135,7 +135,7 @@ void Graphics::draw(Bitmap *bitmap, int x, int y, int width, int height, int cho
 		POINT p[3] = { { x + width / 2 + mid_rotated_top_left.x,y + height / 2 + mid_rotated_top_left.y },
 		{ x + width / 2 + mid_rotated_top_right.x,y + height / 2 + mid_rotated_top_right.y },
 		{ x + width / 2 + mid_rotated_bottom_left.x,y + height / 2 + mid_rotated_bottom_left.y } };
-        if(mask)
+		if (mask)
 			PlgBlt(mHdc, p, mem, chop_x, chop_y, chop_width, chop_height, mask->bm, chop_x, chop_y);
 		else
 			PlgBlt(mHdc, p, mem, chop_x, chop_y, chop_width, chop_height, NULL, chop_x, chop_y);
@@ -202,9 +202,12 @@ void Graphics::draw(Sprite *sprite, int frame, int x, int y, int width, int heig
 
 }
 
-void Graphics::draw(int left, int top, int right, int bottom)
+void Graphics::draw(int left, int top, int right, int bottom, int color)
 {
+	HBRUSH oldBrush = (HBRUSH)SelectObject(mHdc, (HBRUSH)GetStockObject(DC_BRUSH));
+	SetDCBrushColor(mHdc, color);
 	Rectangle(mHdc, left, top, right, bottom);
+	SelectObject(mHdc, oldBrush);
 }
 
 void Graphics::translate(int x, int y)

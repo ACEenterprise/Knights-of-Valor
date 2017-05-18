@@ -122,6 +122,7 @@
     <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Gui.cpp" />
+    <ClCompile Include="Knight.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Sprite.cpp" />
   </ItemGroup>
@@ -130,6 +131,7 @@
     <ClInclude Include="Bitmap.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Gui.h" />
+    <ClInclude Include="Knight.h" />
     <ClInclude Include="Sprite.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

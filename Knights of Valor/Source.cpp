@@ -15,7 +15,9 @@ int main()
 	Knight knight("cavaler1dreaptajos.bmp", 32, 32);
 	
 	Bitmap* bm = new Bitmap();
-	bm->Load("cavaler1dreaptajosmasca.bmp");
+	bm->Load("cavaler1miscaredreaptamasca.bmp");
+
+	int y = 0;
 
 	while (window.pollEvent().first != Window::Window_event::close)
 	{
@@ -25,7 +27,9 @@ int main()
 		knight.runAnimation();
 		g.invalidate();
 
-		knight.Change_Right("cavaler1miscaredreapta")
+		if (++y % 50 == 0) {
+			knight.Move_Right();
+		}
 	}
 
 	return 0;

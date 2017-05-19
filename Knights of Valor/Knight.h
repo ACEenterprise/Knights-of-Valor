@@ -3,26 +3,37 @@
 
 #include <iostream>
 #include "Animation.h"
+#include <vector>
 
 class Knight {
 private:
 	Animation an;
-	Sprite* sp;
-	double x, y;
+	vector<Sprite> Sprites;
+	vector<Bitmap> Bmps;
+
+	int x, y;
 
 public:
 
-	Knight(const char* filename, int x, int y);
+	Knight(string path, int x, int y);
 
 	Sprite* getSprite();
 	int getFrame();
-	int getX();
-	int getY();
 	void runAnimation();
 
-	void Reset(const char* filename);
-	void Change_Right(const char* filename, int frames);
+	int getX();
+	int getY();
+
+	void Move_Idle();
 	void Move_Right();
+	void Move_Left();
+	void Move_Up();
+	void Move_Down();
+	void Move_Up_Right();
+	void Move_Up_Left();
+	void Move_Down_Right();
+	void Move_Down_Left();
+
 };
 
 

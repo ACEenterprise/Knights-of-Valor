@@ -21,7 +21,8 @@ public:
 	void runAnimation();
 
 	void Reset(const char* filename);
-	void Move_Right(const char* filename, int frames);
+	void Change_Right(const char* filename, int frames);
+	void Move_Right();
 };
 
 

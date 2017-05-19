@@ -16,10 +16,13 @@ public:
 
 	Sprite* getSprite();
 	int getFrame();
+	int getX();
+	int getY();
 	void runAnimation();
 
+	void Reset(const char* filename);
+	void Move_Right(const char* filename, int frames);
 };
-
 
 
 #endif

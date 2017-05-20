@@ -1,25 +1,25 @@
 #include "Knight.h"
 
 Knight::Knight(string path, string name, int x, int y) {
-	Sprites[0].Load((path + "/Idle.bmp").c_str(), 1, 1);
-	Sprites[1].Load((path + "/Right.bmp").c_str(), 8, 1);
-	Sprites[2].Load((path + "/Left.bmp").c_str(), 8, 1);
-	Sprites[3].Load((path + "/Up.bmp").c_str(), 8, 1);
-	Sprites[4].Load((path + "/Down.bmp").c_str(), 8, 1);
-	Sprites[5].Load((path + "/Up_right.bmp").c_str(), 8, 1);
-	Sprites[6].Load((path + "/Up_left.bmp").c_str(), 8, 1);
-	Sprites[7].Load((path + "/Down_right.bmp").c_str(), 8, 1);
-	Sprites[8].Load((path + "/Down_left.bmp").c_str(), 8, 1);
+	Sprites[0].Load((path + "/idle.bmp").c_str(), 1, 1);
+	Sprites[1].Load((path + "/right.bmp").c_str(), 8, 1);
+	Sprites[2].Load((path + "/left.bmp").c_str(), 8, 1);
+	Sprites[3].Load((path + "/up.bmp").c_str(), 8, 1);
+	Sprites[4].Load((path + "/down.bmp").c_str(), 8, 1);
+	Sprites[5].Load((path + "/up_right.bmp").c_str(), 8, 1);
+	Sprites[6].Load((path + "/up_left.bmp").c_str(), 8, 1);
+	Sprites[7].Load((path + "/down_right.bmp").c_str(), 8, 1);
+	Sprites[8].Load((path + "/down_left.bmp").c_str(), 8, 1);
 
-	Bmps[0].Load((path + "/IdleMask.bmp").c_str());
-	Bmps[1].Load((path + "/RightMask.bmp").c_str());
-	Bmps[2].Load((path + "/LeftMask.bmp").c_str());
-	Bmps[3].Load((path + "/UpMask.bmp").c_str());
-	Bmps[4].Load((path + "/DownMask.bmp").c_str());
-	Bmps[5].Load((path + "/Up_rightMask.bmp").c_str());
-	Bmps[6].Load((path + "/Up_leftMask.bmp").c_str());
-	Bmps[7].Load((path + "/Down_rightMask.bmp").c_str());
-	Bmps[8].Load((path + "/Down_leftMask.bmp").c_str());
+	Bmps[0].Load((path + "/idleMask.bmp").c_str());
+	Bmps[1].Load((path + "/rightMask.bmp").c_str());
+	Bmps[2].Load((path + "/leftMask.bmp").c_str());
+	Bmps[3].Load((path + "/upMask.bmp").c_str());
+	Bmps[4].Load((path + "/downMask.bmp").c_str());
+	Bmps[5].Load((path + "/up_rightMask.bmp").c_str());
+	Bmps[6].Load((path + "/up_leftMask.bmp").c_str());
+	Bmps[7].Load((path + "/down_rightMask.bmp").c_str());
+	Bmps[8].Load((path + "/down_leftMask.bmp").c_str());
 
 	this->x = x;
 	this->y = y;
@@ -29,7 +29,7 @@ Knight::Knight(string path, string name, int x, int y) {
 
 	an.setSprite(&Sprites[0]);
 	an.setRepeat(true);
-	an.setDuration(200);
+	an.setDuration(100);
 }
 
 Sprite* Knight::getSprite() {

@@ -19,13 +19,12 @@ public:
 	Knight(string path, string name, int x, int y);
 
 	Sprite* getSprite();
+	Bitmap* getBitmap();
 	int getFrame();
 	void runAnimation();
 
 	int getX();
 	int getY();
-
-	Bitmap* getBitmap();
 
 	void Move_Idle();
 	void Move_Right();

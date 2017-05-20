@@ -8,14 +8,15 @@
 class Knight {
 private:
 	Animation an;
-	vector<Sprite> Sprites;
-	vector<Bitmap> Bmps;
+	Sprite Sprites[10];
+	Bitmap Bmps[10];
 
-	int x, y;
+	int x, y, current_state;
+	string name;
 
 public:
 
-	Knight(string path, int x, int y);
+	Knight(string path, string name, int x, int y);
 
 	Sprite* getSprite();
 	int getFrame();
@@ -23,6 +24,8 @@ public:
 
 	int getX();
 	int getY();
+
+	Bitmap* getBitmap();
 
 	void Move_Idle();
 	void Move_Right();

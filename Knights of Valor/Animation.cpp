@@ -28,6 +28,7 @@ void Animation::setDuration(int duration)
 void Animation::restart()
 {
 	frame = 0;
+	current_time = 0;
 	last_time = 0;
 }
 

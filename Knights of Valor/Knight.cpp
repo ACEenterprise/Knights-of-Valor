@@ -193,3 +193,68 @@ void Knight::go(stack<pair<int, int>> &path) {
 		}
 	}
 }
+
+stack<pair<int, int>> Knight::get_path(vector<vector<int>> &map, int dest_x, int dest_y) {
+	int n = map.size();
+
+	dest_x = (dest_x - 48) / 96;
+	dest_y = (dest_y - 48) / 96;
+
+	int viz[100][100];
+	for (int i = 0; i < map.size(); ++i) {
+		for (int j = 0; j < map.size(); ++j) {
+			viz[i][j] = -10;
+		}
+	}
+
+	queue<pair<int, int>> q;
+
+	int X = (this->x - 48) / 96;
+	int Y = (this->y - 48) / 96;
+	q.push({ X, Y });
+	viz[X][Y] = 0;
+
+	int ok = 0;
+
+	while (!q.empty()) {
+		int cur_x = q.front().first;
+		int cur_y = q.front().second;
+
+		if (cur_x == dest_x && cur_y == dest_y) {
+			ok = 1;
+			break;
+		}
+
+		q.pop();
+
+		for (int i = 0; i < 8; ++i) {
+			if (interior(cur_x + dx[i], cur_y + dy[i], n) &&
+				map[cur_y + dy[i]][cur_x + dx[i]] > 0 && 
+				viz[cur_y + dy[i]][cur_x + dx[i]] < 0) {
+
+				q.push({ cur_x + dx[i], cur_y + dy[i] });
+				viz[cur_y + dy[i]][cur_x + dx[i]] = viz[cur_y][cur_x] + 1;
+			}
+		}
+	}
+
+
+	stack<pair<int, int>> path;
+
+	//General widht and height on map tile. map.tileWidth() and map.tileHeight()
+
+	if (ok == 1) {
+		while (!(dest_x == X && dest_y == Y)) {
+			path.push({ dest_x * 96 + 48, dest_y * 96 + 48 });
+			for (int i = 0; i < 8; ++i) {
+				if (viz[dest_y + dy[i]][dest_x + dx[i]] == viz[dest_y][dest_x] - 1) {
+					dest_x = dest_x + dx[i];
+					dest_y = dest_y + dy[i];
+					break;
+				}
+			}
+		}
+	}
+
+	return path;
+}

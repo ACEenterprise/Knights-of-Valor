@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Animation.h"
 #include <vector>
+#include <queue>
 #include <stack>
 
 class Knight {
@@ -11,6 +12,9 @@ private:
 	Animation an;
 	Sprite Sprites[10];
 	Bitmap Bmps[10];
+
+	const int dx[8] = { 0, 1, 1, 1, 0, -1, -1, -1 };
+	const int dy[8] = { -1, -1, 0, 1, 1, 1, 0, -1 };
 
 	int x, y, current_state;
 	string name;
@@ -38,6 +42,14 @@ public:
 	void Move_Down_Left();
 
 	void go(stack<pair<int, int>> &path);
+
+	bool interior(int i, int j, int n) {
+		if (i < n && i >= 0 && j >= 0 && j < n)
+			return 1;
+		return 0;
+	}
+
+	stack<pair<int, int>> get_path(vector<vector<int>> &map, int dest_x, int dest_y);
 
 };
 

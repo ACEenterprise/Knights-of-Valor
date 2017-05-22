@@ -25,6 +25,7 @@ Graphics::Graphics(Window &window, int width, int height)
 
 	HBRUSH oldBrush = (HBRUSH)SelectObject(mHdc, (HBRUSH)GetStockObject(WHITE_BRUSH));
 
+
 	Rectangle(mHdc, 0, 0, width, height);
 
 	SelectObject(mHdc, oldBrush);
@@ -145,8 +146,8 @@ void Graphics::draw(Bitmap *bitmap, int x, int y, int width, int height, int cho
 		DeleteDC(mem);
 		ReleaseDC(hwnd, hdc);
 	}
-
-
+	 
+	  
 
 }
 
@@ -202,12 +203,30 @@ void Graphics::draw(Sprite *sprite, int frame, int x, int y, int width, int heig
 
 }
 
-void Graphics::draw(int left, int top, int right, int bottom, int color)
+void Graphics::draw(int left, int top, int right, int bottom,int fill_color,int outline_color,bool transparency)
 {
-	HBRUSH oldBrush = (HBRUSH)SelectObject(mHdc, (HBRUSH)GetStockObject(DC_BRUSH));
-	SetDCBrushColor(mHdc, color);
-	Rectangle(mHdc, left, top, right, bottom);
-	SelectObject(mHdc, oldBrush);
+	if (transparency)
+	{
+		HBRUSH oldBrush = (HBRUSH)SelectObject(mHdc, (HBRUSH)GetStockObject(NULL_BRUSH));
+		HPEN oldPen = (HPEN)SelectObject(mHdc, (HPEN)GetStockObject(DC_PEN));
+		SetDCPenColor(mHdc, outline_color);
+
+		Rectangle(mHdc, left, top, right, bottom);
+		SelectObject(mHdc, oldBrush);
+		SelectObject(mHdc, oldPen);
+	}
+	else
+	{
+		HBRUSH oldBrush = (HBRUSH)SelectObject(mHdc, (HBRUSH)GetStockObject(DC_BRUSH));
+		HPEN oldPen = (HPEN)SelectObject(mHdc, (HPEN)GetStockObject(DC_PEN));
+		SetDCPenColor(mHdc, outline_color);
+		SetDCBrushColor(mHdc, fill_color);
+
+
+		Rectangle(mHdc, left, top, right, bottom);
+		SelectObject(mHdc, oldBrush);
+		SelectObject(mHdc, oldPen);
+	}
 }
 
 void Graphics::translate(int x, int y)

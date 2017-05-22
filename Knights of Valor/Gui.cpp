@@ -1,7 +1,7 @@
 #include"Gui.h"
 bool Window::create_window(const char *title, int x, int y, int width, int height)
 {
-
+  
 	wndclass.cbSize = sizeof(wndclass);
 	wndclass.cbClsExtra = NULL;
 	wndclass.cbWndExtra = NULL;
@@ -14,7 +14,7 @@ bool Window::create_window(const char *title, int x, int y, int width, int heigh
 	wndclass.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
 	wndclass.lpszClassName = "window";
 	wndclass.lpfnWndProc = WndProc;
-
+	    
 	if (!RegisterClassEx(&wndclass))
 		return false;
 
@@ -68,11 +68,11 @@ std::pair<int, int> Window::pollEvent()
 		case WM_KEYDOWN:
 			nr = 0;
 
-			if (LOWORD(msg.wParam) >= 'A' && LOWORD(msg.wParam) <= 'Z')
-				return std::make_pair(Key_event::key_pressed, LOWORD(msg.wParam) - 'A');
-
+			if(LOWORD(msg.wParam)>='A' && LOWORD(msg.wParam) <='Z')
+                 return std::make_pair(Key_event::key_pressed, LOWORD(msg.wParam)-'A');
+			
 			if (LOWORD(msg.wParam) >= '0' && LOWORD(msg.wParam) <= '9')
-				return std::make_pair(Key_event::key_pressed, LOWORD(msg.wParam) - '0' + 52);
+				return std::make_pair(Key_event::key_pressed, LOWORD(msg.wParam)-'0'+52);
 
 			break;
 		case WM_KEYUP:
@@ -86,8 +86,8 @@ std::pair<int, int> Window::pollEvent()
 		case WM_LBUTTONDOWN:
 			GetCursorPos(&p);
 			ScreenToClient(hwnd, &p);
-
-			return std::make_pair(Mouse_event::left_pressed, p.x | ((p.y) << 16));
+			
+			return std::make_pair(Mouse_event::left_pressed, p.x | ((p.y)<<16));
 			break;
 		case WM_LBUTTONUP:
 			GetCursorPos(&p);
@@ -102,7 +102,7 @@ std::pair<int, int> Window::pollEvent()
 			return std::make_pair(Mouse_event::moved, p.x | ((p.y) << 16));
 			break;
 
-			//RIGHT CLICK AND ARROWS TO DO
+		  //RIGHT CLICK AND ARROWS TO DO
 		}
 	}
 	return std::make_pair(-1, 0);

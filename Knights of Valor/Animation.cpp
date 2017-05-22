@@ -28,7 +28,6 @@ void Animation::setDuration(int duration)
 void Animation::restart()
 {
 	frame = 0;
-	current_time = 0;
 	last_time = 0;
 }
 
@@ -51,8 +50,8 @@ void Animation::runAnimation()
 
 		if (last_time == 0)
 			last_time = current_time;
-
-
+		 
+		 
 		if (repeat == true || (repeat == false && frame != sprite->get_number_of_frames() - 1))
 		{
 			long long x = current_time - last_time;

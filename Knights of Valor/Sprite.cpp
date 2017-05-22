@@ -54,8 +54,23 @@ int Sprite::getWidth()
 {
 	return width_of_frame;
 }
-
+  
 int Sprite::getHeight()
-{
+{ 
 	return height_of_frame;
+}
+
+int Sprite::getFramesPerWidth()
+{
+	return frames_per_width;
+}
+
+int Sprite::getFramesPerHeight()
+{
+	return frames_per_height;
+}
+
+string Sprite::getPath()
+{
+	return bm.getPath();
 }

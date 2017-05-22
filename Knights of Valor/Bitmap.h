@@ -9,16 +9,18 @@ class Bitmap
 
 private:
 	friend class Graphics;
-
+	 
 	BITMAPFILEHEADER bmH;
 	BITMAPINFOHEADER bmiH;
 	HBITMAP bm;
 	BITMAPINFO *bmi;
 	unsigned char *pixels;
 	unsigned char *color_table;
-
+ 
 	int width;
 	int height;
+
+	string path;
 
 	void create(HWND hwnd);
 
@@ -32,6 +34,8 @@ public:
 	int getWidth();
 
 	int getHeight();
+
+	string getPath();
 
 	~Bitmap();
 };

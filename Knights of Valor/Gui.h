@@ -7,9 +7,9 @@ class Window
 {
 
 private:
-
+	 
 	friend class Graphics;
-
+	 
 	HWND hwnd;
 	WNDCLASSEX wndclass;
 	MSG msg;
@@ -27,7 +27,7 @@ private:
 	{
 		switch (msg)
 		{
-		case WM_DESTROY:
+		  case WM_DESTROY:
 			PostQuitMessage(0);
 			break;
 
@@ -109,7 +109,7 @@ public:
 		static const int arrow_down = 65;
 	};
 
-	struct Mouse_event
+    struct Mouse_event
 	{
 		static const int left_pressed = 66;
 		static const int right_pressed = 67;

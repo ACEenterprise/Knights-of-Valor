@@ -8,7 +8,7 @@ class Sprite
 private:
 	friend class Graphics;
 	Bitmap bm;
-
+	 
 	int x, y;
 	int number_of_frames;
 	int frames_per_width;
@@ -17,7 +17,7 @@ private:
 	int current_frame;
 	int width_of_frame;
 	int height_of_frame;
-
+	 
 public:
 	Sprite();
 
@@ -34,6 +34,12 @@ public:
 	int getWidth();
 
 	int getHeight();
+
+	int getFramesPerWidth();
+
+	int getFramesPerHeight();
+
+	string getPath();
 
 };
 

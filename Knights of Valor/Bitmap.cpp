@@ -5,10 +5,11 @@ Bitmap::Bitmap()
 	width = height = 0;
 	pixels = NULL;
 	color_table = NULL;
-	bmi = NULL;
+	bmi = NULL; 
 	bm = NULL;
-}
-
+	path = "";
+} 
+ 
 void Bitmap::create(HWND hwnd)
 {
 	if (bm == NULL)
@@ -108,6 +109,8 @@ bool Bitmap::Load(const char *file_name)
 	pixels = new unsigned char[bmH.bfSize - bmH.bfOffBits];
 	in.read((char*)pixels, bmH.bfSize - bmH.bfOffBits);
 
+	this->path+= file_name;
+
 	return true;
 }
 
@@ -119,6 +122,11 @@ int Bitmap::getWidth()
 int Bitmap::getHeight()
 {
 	return height;
+}
+
+string Bitmap::getPath()
+{
+	return path;
 }
 
 Bitmap::~Bitmap()

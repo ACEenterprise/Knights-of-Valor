@@ -147,3 +147,49 @@ void Knight::Move_Down_Left() {
 	++y;
 	--x;
 }
+
+void Knight::go(stack<pair<int, int>> &path) {
+	if (path.empty()) {
+		Move_Idle();
+		return;
+	}
+
+	int next_x = path.top().first;
+	int next_y = path.top().second;
+
+	if (x == next_x && y == next_y) {
+		path.pop();
+	}
+	else {
+		if (next_x > this->x) {
+			if (next_y == this->y) {
+				Move_Right();
+			}
+			else if (next_y > this->y) {
+				Move_Down_Right();
+			}
+			else {
+				Move_Up_Right();
+			}
+		}
+		else if (next_x < this->x) {
+			if (next_y == this->y) {
+				Move_Left();
+			}
+			else if (next_y > this->y) {
+				Move_Down_Left();
+			}
+			else {
+				Move_Up_Left();
+			}
+		}
+		else {
+			if (next_y > this->y) {
+				Move_Down();
+			}
+			else {
+				Move_Up();
+			}
+		}
+	}
+}

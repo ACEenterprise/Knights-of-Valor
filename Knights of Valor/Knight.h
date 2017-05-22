@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Animation.h"
 #include <vector>
+#include <stack>
 
 class Knight {
 private:
@@ -35,6 +36,8 @@ public:
 	void Move_Up_Left();
 	void Move_Down_Right();
 	void Move_Down_Left();
+
+	void go(stack<pair<int, int>> &path);
 
 };
 

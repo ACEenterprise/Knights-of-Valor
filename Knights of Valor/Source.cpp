@@ -7,7 +7,7 @@
 using namespace std;
 
 vector<vector<int>> v;
-
+vector<Sprite> vec;
 int main() 
 {
 	Window window;
@@ -16,17 +16,19 @@ int main()
 	Graphics g;
 	g.create(window, 1920, 1080);
 
-	Knight knight("cavaler1", "HADRIAN", 32, 32);
+	Knight knight("cavaler1", "HADRIAN", 32, 64*3 + 32);
 	int y = 0;
 	
 	Map map(70, 70, 64, 64);
-	stack<pair<int, int>> path = knight.get_path(map, 608, 608);
+	map.Import("data.txt", vec);
+	stack<pair<int, int>> path = knight.get_path(map, 32, 64*4 + 32);
 	
 	Pathing p;
 
 	while (window.pollEvent().first != Window::Window_event::close)
 	{
 		g.draw(0, 0, 1920, 1080, RGB(0, 0, 0), false, RGB(0, 0, 0));
+		map.drawMap(g);
 		knight.draw(g);
 		p.draw_Green(g, path, knight.getX(), knight.getY());
 		y++;

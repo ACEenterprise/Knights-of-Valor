@@ -1,8 +1,9 @@
 #ifndef KNIGHT_H
-#define KNIGHT
+#define KNIGHT_H
 
 #include <iostream>
 #include "Animation.h"
+#include "Graphics.h"
 #include <vector>
 #include <queue>
 #include <stack>
@@ -42,6 +43,8 @@ public:
 	void Move_Down_Left();
 
 	void go(stack<pair<int, int>> &path);
+
+	void draw(Graphics &g);
 
 	bool interior(int i, int j, int n) {
 		if (i < n && i >= 0 && j >= 0 && j < n)

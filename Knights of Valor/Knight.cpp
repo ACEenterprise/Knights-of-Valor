@@ -258,3 +258,8 @@ stack<pair<int, int>> Knight::get_path(vector<vector<int>> &map, int dest_x, int
 
 	return path;
 }
+
+void Knight::draw(Graphics &g) {
+	g.draw(an.getSprite(), an.getFrame(), this->x, this->y, 64, 48, &Bmps[current_state], true, 0);
+	an.runAnimation();
+}

@@ -123,6 +123,7 @@
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Gui.cpp" />
     <ClCompile Include="Knight.cpp" />
+    <ClCompile Include="Pathing.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Sprite.cpp" />
   </ItemGroup>

@@ -197,8 +197,8 @@ void Knight::go(stack<pair<int, int>> &path) {
 stack<pair<int, int>> Knight::get_path(vector<vector<int>> &map, int dest_x, int dest_y) {
 	int n = map.size();
 
-	dest_x = (dest_x - 48) / 96;
-	dest_y = (dest_y - 48) / 96;
+	dest_x = (dest_x - 32) / 64;
+	dest_y = (dest_y - 32) / 64;
 
 	int viz[100][100];
 	for (int i = 0; i < map.size(); ++i) {
@@ -209,8 +209,8 @@ stack<pair<int, int>> Knight::get_path(vector<vector<int>> &map, int dest_x, int
 
 	queue<pair<int, int>> q;
 
-	int X = (this->x - 48) / 96;
-	int Y = (this->y - 48) / 96;
+	int X = (this->x - 32) / 64;
+	int Y = (this->y - 32) / 64;
 	q.push({ X, Y });
 	viz[X][Y] = 0;
 
@@ -245,7 +245,7 @@ stack<pair<int, int>> Knight::get_path(vector<vector<int>> &map, int dest_x, int
 
 	if (ok == 1) {
 		while (!(dest_x == X && dest_y == Y)) {
-			path.push({ dest_x * 96 + 48, dest_y * 96 + 48 });
+			path.push({ dest_x * 64 + 32, dest_y * 64 + 32 });
 			for (int i = 0; i < 8; ++i) {
 				if (viz[dest_y + dy[i]][dest_x + dx[i]] == viz[dest_y][dest_x] - 1) {
 					dest_x = dest_x + dx[i];
@@ -260,6 +260,6 @@ stack<pair<int, int>> Knight::get_path(vector<vector<int>> &map, int dest_x, int
 }
 
 void Knight::draw(Graphics &g) {
-	g.draw(an.getSprite(), an.getFrame(), this->x, this->y, 64, 48, &Bmps[current_state], true, 0);
+	g.draw(an.getSprite(), an.getFrame(), this->x - 32, this->y - 32, 64, 48, &Bmps[current_state], true, 0);
 	an.runAnimation();
 }

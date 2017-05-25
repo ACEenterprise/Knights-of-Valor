@@ -176,6 +176,9 @@ public:
 			Sprite sprite;
 
 			sprites.push_back(sprite);
+		}
+		for(int i=0;i<n;++i)
+		{
 
 			string pt;
 			int w, h;
@@ -183,6 +186,7 @@ public:
 			in >> pt >> w >> h;
 
 			sprites[i].Load(pt.c_str(), w, h);
+			
 		}
 
 		for (int i = 0; i < height; ++i)

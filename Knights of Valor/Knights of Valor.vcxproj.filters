@@ -36,12 +36,6 @@
     <ClCompile Include="Knight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -62,14 +56,7 @@
     <ClInclude Include="Knight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="Map.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tile.h">
-=======
     <ClInclude Include="Pathing.h">
->>>>>>> 9052ca2af1575bbc441edcfdfa470a3db11bc570
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

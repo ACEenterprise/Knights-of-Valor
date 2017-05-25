@@ -3,6 +3,7 @@
 #include"Animation.h"
 #include "Knight.h"
 #include <stack>
+#include "Pathing.h"
 using namespace std;
 
 vector<vector<int>> v;
@@ -45,18 +46,18 @@ int main()
 	}
 	
 	stack<pair<int, int>> path = knight.get_path(v, 912, 912);
+	
+	Pathing p;
 
 	while (window.pollEvent().first != Window::Window_event::close)
 	{
-		g.draw(knight.getSprite(), knight.getFrame(), knight.getX(), knight.getY(), 96, 64, knight.getBitmap(), true, 0);
-
+		knight.draw(g);
+		p.draw_Green(g, path, knight.getX(), knight.getY());
 		y++;
 		if (y % 10 == 0) {
 			knight.go(path);
 		} 
 
-
-		knight.runAnimation();
 		g.invalidate();
 	}
 

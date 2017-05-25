@@ -132,6 +132,7 @@
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Gui.h" />
     <ClInclude Include="Knight.h" />
+    <ClInclude Include="Pathing.h" />
     <ClInclude Include="Sprite.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

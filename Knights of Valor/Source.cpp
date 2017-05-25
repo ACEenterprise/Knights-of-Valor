@@ -17,35 +17,10 @@ int main()
 	g.create(window, 1920, 1080);
 
 	Knight knight("cavaler1", "HADRIAN", 32, 32);
-
 	int y = 0;
-
-	/*
-	path.push({ 132, 132 });
-	path.push({ 68, 198 });
-	path.push({ 132, 198 });
-	path.push({ 132, 262 });
-	path.push({ 198, 198 });
-	path.push({ 198, 132 });
-	*/
 	
-	int n;
-	cin >> n;
-	for (int i = 0; i < n; ++i) {
-		vector<int> tmp;
-		v.push_back(tmp);
-		for (int j = 0; j < n; ++j) {
-			v[i].push_back(0);
-		}
-	}
-
-	for (int i = 0; i < n; ++i) {
-		for (int j = 0; j < n; ++j) {
-			cin >> v[i][j];
-		}
-	}
-	
-	stack<pair<int, int>> path = knight.get_path(v, 608, 608);
+	Map map(70, 70, 64, 64);
+	stack<pair<int, int>> path = knight.get_path(map, 608, 608);
 	
 	Pathing p;
 
@@ -56,7 +31,7 @@ int main()
 		p.draw_Green(g, path, knight.getX(), knight.getY());
 		y++;
 		if (knight.getX() == 608 && knight.getY() == 608) {
-			path = knight.get_path(v, 32, 32);
+			path = knight.get_path(map, 32, 32);
 		}
 		if (y % 10 == 0) {
 			knight.go(path);

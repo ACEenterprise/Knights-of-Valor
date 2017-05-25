@@ -123,9 +123,11 @@
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Gui.cpp" />
     <ClCompile Include="Knight.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Pathing.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Tile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -133,8 +135,10 @@
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Gui.h" />
     <ClInclude Include="Knight.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Pathing.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Tile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

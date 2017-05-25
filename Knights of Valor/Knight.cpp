@@ -194,15 +194,16 @@ void Knight::go(stack<pair<int, int>> &path) {
 	}
 }
 
-stack<pair<int, int>> Knight::get_path(vector<vector<int>> &map, int dest_x, int dest_y) {
-	int n = map.size();
+stack<pair<int, int>> Knight::get_path(Map &map, int dest_x, int dest_y) {
+	int n = map.getWidth();
+	int m = map.getHeight();
 
 	dest_x = (dest_x - 32) / 64;
 	dest_y = (dest_y - 32) / 64;
 
 	int viz[100][100];
-	for (int i = 0; i < map.size(); ++i) {
-		for (int j = 0; j < map.size(); ++j) {
+	for (int i = 0; i < m; ++i) {
+		for (int j = 0; j < n; ++j) {
 			viz[i][j] = -10;
 		}
 	}
@@ -229,7 +230,7 @@ stack<pair<int, int>> Knight::get_path(vector<vector<int>> &map, int dest_x, int
 
 		for (int i = 0; i < 8; ++i) {
 			if (interior(cur_x + dx[i], cur_y + dy[i], n) &&
-				map[cur_y + dy[i]][cur_x + dx[i]] > 0 && 
+				map.getTileState(cur_y + dy[i], cur_x + dx[i]) > 0 &&
 				viz[cur_y + dy[i]][cur_x + dx[i]] < 0) {
 
 				q.push({ cur_x + dx[i], cur_y + dy[i] });
@@ -240,9 +241,6 @@ stack<pair<int, int>> Knight::get_path(vector<vector<int>> &map, int dest_x, int
 
 
 	stack<pair<int, int>> path;
-
-	//General widht and height on map tile. map.tileWidth() and map.tileHeight()
-
 	if (ok == 1) {
 		while (!(dest_x == X && dest_y == Y)) {
 			path.push({ dest_x * 64 + 32, dest_y * 64 + 32 });

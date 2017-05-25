@@ -30,7 +30,7 @@ public:
 			for (int j = 0; j < width; ++j)
 				MapTiles[i*width + j].setState(1);
 	}
-  
+
 	void drawMap(Graphics &g)
 	{
 
@@ -63,6 +63,10 @@ public:
 	void setTileState(int x, int y, int state)
 	{
 		MapTiles[y*width + x].setState(state);
+	}
+
+	int getTileState(int x, int y) {
+		return MapTiles[y * width + x].get_State();
 	}
 
 	void setX(int x)

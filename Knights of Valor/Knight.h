@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Animation.h"
 #include "Graphics.h"
+#include "Map.h"
 #include <vector>
 #include <queue>
 #include <stack>
@@ -52,7 +53,7 @@ public:
 		return 0;
 	}
 
-	stack<pair<int, int>> get_path(vector<vector<int>> &map, int dest_x, int dest_y);
+	stack<pair<int, int>> get_path(Map &map, int dest_x, int dest_y);
 
 };
 

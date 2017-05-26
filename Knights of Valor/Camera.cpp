@@ -14,10 +14,10 @@ void Camera::centrate(Knight* knight)
 
 void Camera::action(Graphics &g)
 {
-	map->setX((1920 / 2 / 64) * 64-knight->getX());
-	map->setY((1080 / 2 / 64) * 64 -knight->getY());
+	map->setX((1280 / 2 / 64) * 64-knight->getX());
+	map->setY((720 / 2 / 64) * 64 -knight->getY());
 
-	knight->draw(g, (1920 / 2 / 64) * 64, (1080 / 2 / 64) * 64);
+	knight->draw(g, (1280 / 2 / 64) * 64, (720 / 2 / 64) * 64);
 }
 
 int Camera::getX()

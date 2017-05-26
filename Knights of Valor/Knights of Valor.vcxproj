@@ -120,6 +120,7 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Bitmap.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Gui.cpp" />
     <ClCompile Include="Knight.cpp" />
@@ -132,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Gui.h" />
     <ClInclude Include="Knight.h" />

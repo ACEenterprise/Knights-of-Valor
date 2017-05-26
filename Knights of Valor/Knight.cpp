@@ -213,7 +213,7 @@ stack<pair<int, int>> Knight::get_path(Map &map, int dest_x, int dest_y) {
 	int X = (this->x - 32) / 64;
 	int Y = (this->y - 32) / 64;
 	q.push({ X, Y });
-	viz[X][Y] = 0;
+	viz[Y][X] = 0;
 
 	int ok = 0;
 
@@ -230,7 +230,7 @@ stack<pair<int, int>> Knight::get_path(Map &map, int dest_x, int dest_y) {
 
 		for (int i = 0; i < 8; ++i) {
 			if (interior(cur_x + dx[i], cur_y + dy[i], n) &&
-				map.getTileState(cur_y + dy[i], cur_x + dx[i]) > 0 &&
+				map.getTileState(cur_x + dx[i], cur_y + dy[i]) > 0 &&
 				viz[cur_y + dy[i]][cur_x + dx[i]] < 0) {
 
 				q.push({ cur_x + dx[i], cur_y + dy[i] });
@@ -257,7 +257,7 @@ stack<pair<int, int>> Knight::get_path(Map &map, int dest_x, int dest_y) {
 	return path;
 }
 
-void Knight::draw(Graphics &g) {
-	g.draw(an.getSprite(), an.getFrame(), this->x - 32, this->y - 32, 64, 48, &Bmps[current_state], true, 0);
+void Knight::draw(Graphics &g,int x,int y) {
+	g.draw(an.getSprite(), an.getFrame(), x - 32, y - 32, 64, 64, &Bmps[current_state], true, 0);
 	an.runAnimation();
 }

@@ -37,8 +37,7 @@ public:
 		for(int i=0;i<height;++i)
 			for (int j = 0; j < width; ++j)
 			{
-				if (j * width_tile +x>=0 && j * width_tile+x <=1920 && i * height_tile +y>=0 && i * height_tile +y<=1080)
-				{
+				
 					if (MapTiles[i*width + j].getAnimation().getSprite())
 					{
 						g.draw(MapTiles[i*width + j].getAnimation().getSprite(), MapTiles[i*width + j].getAnimation().getFrame(), j * width_tile+x, i * height_tile+y, width_tile*MapTiles[i*width + j].getSizeW(), height_tile*MapTiles[i*width + j].getSizeH());
@@ -50,7 +49,7 @@ public:
 					else if (MapTiles[i*width + j].get_State() == 0)
 						g.draw(j * width_tile + x, i * height_tile + y, j * width_tile + x + width_tile, i * height_tile + y + height_tile, RGB(255, 255, 255), RGB(255, 0, 0), true);
 				}
-			}
+			
 	}
 
 	void setAnimation(Animation anim, int x,int y,int size_w,int size_h)

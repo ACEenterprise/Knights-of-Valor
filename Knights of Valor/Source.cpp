@@ -2,6 +2,7 @@
 #include"Graphics.h"
 #include"Animation.h"
 #include "Knight.h"
+#include"Camera.h"
 #include <stack>
 #include "Pathing.h"
 using namespace std;
@@ -16,28 +17,39 @@ int main()
 	Graphics g;
 	g.create(window, 1920, 1080);
 
-	Knight knight("cavaler1", "HADRIAN", 32, 64*3 + 32);
+	Knight knight("cavaler1", "HADRIAN", 32, 64 * 3 + 32);
 	int y = 0;
 	
 	Map map(70, 70, 64, 64);
 	map.Import("data.txt", vec);
-	stack<pair<int, int>> path = knight.get_path(map, 32, 64*4 + 32);
 	
+	stack<pair<int, int>> path;
 	Pathing p;
+	pair<int, int> ev;
 
-	while (window.pollEvent().first != Window::Window_event::close)
+	Camera camera(&map);
+
+	camera.centrate(&knight);
+
+	while ((ev=window.pollEvent()).first != Window::Window_event::close)
 	{
+		
 		g.draw(0, 0, 1920, 1080, RGB(0, 0, 0), false, RGB(0, 0, 0));
 		map.drawMap(g);
-		knight.draw(g);
-		p.draw_Green(g, path, knight.getX(), knight.getY());
-		y++;
-		if (knight.getX() == 608 && knight.getY() == 608) {
-			path = knight.get_path(map, 32, 32);
+
+		if (ev.first == Window::Mouse_event::left_pressed)
+		{
+			int mouse_x = ev.second & 0xFFFF;
+			int mouse_y = ev.second >> 16;
+
+			path = knight.get_path(map, ((mouse_x+32) / 64) * 64 + 32 - camera.getX(), ((mouse_y+32) / 64) * 64 - camera.getY() + 32);
+
 		}
-		if (y % 10 == 0) {
-			knight.go(path);
-		} 
+
+		p.draw_Green(g, path, knight.getX(), knight.getY(),camera);
+		knight.go(path);
+
+		camera.action(g);
 
 		g.invalidate();
 	}

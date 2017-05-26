@@ -8,7 +8,6 @@
 #include <vector>
 #include <queue>
 #include <stack>
-
 class Knight {
 private:
 	Animation an;
@@ -45,7 +44,7 @@ public:
 
 	void go(stack<pair<int, int>> &path);
 
-	void draw(Graphics &g);
+	void draw(Graphics &g,int x,int y);
 
 	bool interior(int i, int j, int n) {
 		if (i < n && i >= 0 && j >= 0 && j < n)

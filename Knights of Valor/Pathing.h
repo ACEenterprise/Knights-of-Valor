@@ -6,6 +6,7 @@
 #include "Graphics.h"
 #include "Knight.h"
 #include "Bitmap.h"
+#include"Camera.h"
 #include <string.h>
 #include <stack>
 
@@ -20,7 +21,7 @@ public:
 
 	Pathing();
 
-	void draw_Green(Graphics &g, stack<pair<int, int>> path, int x, int y);
+	void draw_Green(Graphics &g, stack<pair<int, int>> path, int x, int y,Camera c);
 	void draw_Red(Graphics &g, stack<pair<int, int>> path, int x, int y);
 
 };

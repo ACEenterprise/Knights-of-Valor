@@ -32,47 +32,46 @@ Pathing::Pathing() {
 	Bmps[8].Load("pathing/pdown_leftMask.bmp");
 }
 
-void Pathing::draw_Green(Graphics &g, stack<pair<int, int>> path, int x, int y) {
+void Pathing::draw_Green(Graphics &g, stack<pair<int, int>> path, int x, int y,Camera c) {
 	while (!path.empty()) {
 		int next_x = path.top().first;
 		int next_y = path.top().second;
-
 		path.pop();
 
 		if (path.size() == 0) {
-			g.draw(&GreenArrow[0], 0, next_x - 32, next_y - 32, 64, 64, &Bmps[0], true, 0);
+			g.draw(&GreenArrow[0], 0, c.getX() + next_x - 32, c.getY() + next_y - 32, 64, 64, &Bmps[0], true, 0);
 			return;
 		}
 
 
 		if (next_x > x) {
 			if (next_y == y) {
-				g.draw(&GreenArrow[1], 0, next_x - 32, next_y - 32, 64, 64, &Bmps[1], true, 0);
+				g.draw(&GreenArrow[1], 0, c.getX() + next_x - 32, c.getY() + next_y - 32, 64, 64, &Bmps[1], true, 0);
 			}
 			else if (next_y > y) {
-				g.draw(&GreenArrow[7], 0, next_x - 32, next_y - 32, 64, 64, &Bmps[7], true, 0);
+				g.draw(&GreenArrow[7], 0, c.getX() + next_x - 32, c.getY() + next_y - 32, 64, 64, &Bmps[7], true, 0);
 			}
 			else {
-				g.draw(&GreenArrow[5], 0, next_x - 32, next_y - 32, 64, 64, &Bmps[5], true, 0);
+				g.draw(&GreenArrow[5], 0, c.getX() + next_x - 32, c.getY() + next_y - 32, 64, 64, &Bmps[5], true, 0);
 			}
 		}
 		else if (next_x < x) {
 			if (next_y == y) {
-				g.draw(&GreenArrow[2], 0, next_x - 32, next_y - 32, 64, 64, &Bmps[2], true, 0);
+				g.draw(&GreenArrow[2], 0, c.getX() + next_x - 32, c.getY() + next_y - 32, 64, 64, &Bmps[2], true, 0);
 			}
 			else if (next_y > y) {
-				g.draw(&GreenArrow[8], 0, next_x - 32, next_y - 32, 64, 64, &Bmps[8], true, 0);
+				g.draw(&GreenArrow[8], 0, c.getX() + next_x - 32, c.getY() + next_y - 32, 64, 64, &Bmps[8], true, 0);
 			}
 			else {
-				g.draw(&GreenArrow[6], 0, next_x - 32, next_y - 32, 64, 64, &Bmps[6], true, 0);
+				g.draw(&GreenArrow[6], 0, c.getX() + next_x - 32, c.getY() + next_y - 32, 64, 64, &Bmps[6], true, 0);
 			}
 		}
 		else {
 			if (next_y > y) {
-				g.draw(&GreenArrow[4], 0, next_x - 32, next_y - 32, 64, 64, &Bmps[4], true, 0);
+				g.draw(&GreenArrow[4], 0, c.getX() + next_x - 32, c.getY() + next_y - 32, 64, 64, &Bmps[4], true, 0);
 			}
 			else if (next_y < y) {
-				g.draw(&GreenArrow[3], 0, next_x - 32, next_y - 32, 64, 64, &Bmps[3], true, 0);
+				g.draw(&GreenArrow[3], 0, c.getX() + next_x - 32, c.getY() + next_y - 32, 64, 64, &Bmps[3], true, 0);
 			}
 		}
 		x = next_x;
